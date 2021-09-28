@@ -28,9 +28,7 @@ public class Calculator {
 
 
     boolean validateCalculator(){
-
-
-        if (list.get(list.size() - 1).chars().allMatch( c -> c == '+' || c == '-' || c== '/' || c == '*')) {
+        if(list.size() < 2){
             return false;
         }
 
@@ -43,9 +41,13 @@ public class Calculator {
         String secondelement = "";
         int thirdElement = 0;
 
-        //This check will see if the first argument is an operand, if it is then it will add a 0 to the beginning of the calculation.
+        //This check will see if the first argument is an operator, if it is then it will add a 0 to te beginning of the calculation.
         if(list.get(0).chars().allMatch( c ->  c == '+' || c == '-' || c== '/' || c == '*')) {
             list.add(0, "0");
+        }
+
+        if(list.get(list.size() - 1).chars().allMatch( c -> c == '+' || c == '-' || c== '/' || c == '*')) {
+            list.add("0");
         }
 
             firstElement = Integer.parseInt(list.get(0));
