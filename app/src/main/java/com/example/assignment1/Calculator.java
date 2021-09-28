@@ -11,11 +11,6 @@ public class Calculator {
     boolean validateUserInput (String Input){
 
 
-        //if last element was digit and next one is also digit
-        if ((Input.chars().allMatch( c ->  c == '+' || c == '-' || c== '/' || c == '*') && list.isEmpty())){
-          return false;
-        }
-
         if ((Input.chars().allMatch(Character::isDigit) && ( list.size() > 0 &&
                 list.get(list.size() - 1).chars().allMatch(Character::isDigit)) )){
 
@@ -33,9 +28,7 @@ public class Calculator {
 
 
     boolean validateCalculator(){
-        if (list.isEmpty() || list.size() <= 2 ) {
-            return false;
-        }
+
 
         if (list.get(list.size() - 1).chars().allMatch( c -> c == '+' || c == '-' || c== '/' || c == '*')) {
             return false;
@@ -46,10 +39,25 @@ public class Calculator {
 
 
     int calculate(){
-        int firstElement = Integer.parseInt(list.get(0));
-        String secondelement = (list.get(1));
-        int thirdElement = Integer.parseInt(list.get(2));
+        String fElement="";
+        //Check this
+        int firstElement = 0;
+        String secondelement = "";
+        int thirdElement = 0;
 
+        if(list.get(0).chars().allMatch( c ->  c == '+' || c == '-' || c== '/' || c == '*')){
+            list.add(0, "0");
+
+
+            firstElement = Integer.parseInt(list.get(0));
+             secondelement = (list.get(1));
+             thirdElement = Integer.parseInt(list.get(2));
+        }else {
+
+           firstElement = Integer.parseInt(list.get(0));
+             secondelement = (list.get(1));
+           thirdElement = Integer.parseInt(list.get(2));
+        }
 
             while(list.size()>1) {
 
