@@ -39,25 +39,19 @@ public class Calculator {
 
 
     int calculate(){
-        String fElement="";
-        //Check this
         int firstElement = 0;
         String secondelement = "";
         int thirdElement = 0;
 
-        if(list.get(0).chars().allMatch( c ->  c == '+' || c == '-' || c== '/' || c == '*')){
+        //This check will see if the first argument is an operand, if it is then it will add a 0 to the beginning of the calculation.
+        if(list.get(0).chars().allMatch( c ->  c == '+' || c == '-' || c== '/' || c == '*')) {
             list.add(0, "0");
-
+        }
 
             firstElement = Integer.parseInt(list.get(0));
              secondelement = (list.get(1));
              thirdElement = Integer.parseInt(list.get(2));
-        }else {
 
-           firstElement = Integer.parseInt(list.get(0));
-             secondelement = (list.get(1));
-           thirdElement = Integer.parseInt(list.get(2));
-        }
 
             while(list.size()>1) {
 
