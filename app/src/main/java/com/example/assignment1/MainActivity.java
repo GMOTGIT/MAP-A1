@@ -26,13 +26,14 @@ public class MainActivity extends AppCompatActivity
 
     Button plusBut;
     Button timesBut;
-    TextView resultText;
-    TextView advanceText;
     Button dividBut;
     Button minusBut;
     Button advanceBut;
     Button cBut;
     Button equalBut;
+
+    TextView resultText;
+    TextView advanceText;
 
     AlertDialog.Builder builder;
 
@@ -117,7 +118,6 @@ public class MainActivity extends AppCompatActivity
 
 
         equalBut.setOnClickListener(view -> {
-
             if(!myCalculator.validateCalculator()){
 
                 builder.create();
@@ -127,12 +127,14 @@ public class MainActivity extends AppCompatActivity
                 return;
 
             }
-
+            //get the result
             String result = String.valueOf(myCalculator.calculate());
 
-
-            resultText.setText( resultText.getText() + " = " +  result );
+            //update Text with the result
+            resultText.setText( resultText.getText().toString() + " = " +  result );
+            //push text to history
             myCalculator.addHistory(resultText.getText().toString());
+            //clear the list Arraylist
             myCalculator.list.clear();
 
             if(advanceText.isEnabled()){
@@ -154,7 +156,7 @@ public class MainActivity extends AppCompatActivity
        if( !myCalculator.validateUserInput(((Button)view).getText().toString())){
            builder.create();
            builder.setTitle("Error!");
-           builder.setMessage(" No Operands at first. \n Only one Digit or one Operand at a time." );
+           builder.setMessage("Only one Digit or one Operand at a time." );
            builder.show();
            return;
        }
